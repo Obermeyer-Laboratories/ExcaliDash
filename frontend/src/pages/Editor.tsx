@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import {
   Excalidraw,
   CaptureUpdateAction,
+  FONT_FAMILY,
   MainMenu,
   convertToExcalidrawElements,
   exportToSvg,
@@ -1322,6 +1323,7 @@ export const Editor: React.FC = () => {
         const persistedAppState = getPersistedAppState(data.appState || {});
         const hydratedAppState = {
           ...persistedAppState,
+          currentItemFontFamily: FONT_FAMILY.Helvetica,
           collaborators: new Map(),
         };
         latestAppStateRef.current = hydratedAppState;

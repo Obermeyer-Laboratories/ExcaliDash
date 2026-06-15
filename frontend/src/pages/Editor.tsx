@@ -475,12 +475,13 @@ export const Editor: React.FC = () => {
   useEffect(() => {
     if (!id || !isReady) return;
 
-    const socketUrl = import.meta.env.VITE_API_URL === '/api'
+    const resolvedApiUrl = import.meta.env.VITE_API_URL || `${import.meta.env.BASE_URL}api`;
+    const socketUrl = resolvedApiUrl.startsWith('/')
       ? window.location.origin
-      : (import.meta.env.VITE_API_URL || import.meta.env.VITE_DEV_BACKEND_URL || 'http://localhost:8000');
+      : (resolvedApiUrl || import.meta.env.VITE_DEV_BACKEND_URL || 'http://localhost:8000');
 
     const socket = io(socketUrl, {
-      path: '/socket.io',
+      path: `${import.meta.env.BASE_URL}socket.io`,
       transports: ['websocket', 'polling'],
       withCredentials: true,
     });

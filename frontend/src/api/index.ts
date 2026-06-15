@@ -2,7 +2,7 @@ import axios from "axios";
 import type { Drawing, Collection, DrawingSummary } from "../types";
 import { normalizePreviewSvg } from "../utils/previewSvg";
 
-export const API_URL = import.meta.env.VITE_API_URL || "/api";
+export const API_URL = import.meta.env.VITE_API_URL || `${import.meta.env.BASE_URL}api`;
 
 export const api = axios.create({
   baseURL: API_URL,

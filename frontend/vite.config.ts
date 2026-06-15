@@ -28,6 +28,7 @@ export default defineConfig(({ command }) => {
 
   return {
     plugins: [react()],
+    base: process.env.VITE_BASE_PATH || '/',
     define: {
       ...processEnvDefines,
       'import.meta.env.VITE_APP_VERSION': JSON.stringify(appVersion),

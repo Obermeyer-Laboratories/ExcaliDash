@@ -26,7 +26,7 @@ const PageLoader = () => (
 function App() {
   return (
     <ThemeProvider>
-      <Router>
+      <Router basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
         <AuthProvider>
           <UploadProvider>
             <Suspense fallback={<PageLoader />}>
